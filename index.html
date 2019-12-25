@@ -25,7 +25,7 @@
         }
         
         .transparent-text text {
-            font-size: 105px;
+            font-size: 85px;
         }
         
         .header-backdrop {
@@ -44,6 +44,10 @@
         
         .mask-container.hovered .bg-video {
             opacity: 1;
+        }
+        
+        .mask-container.hovered .transparent-text {
+            stroke: transparent
         }
         
         .bg-video {
@@ -127,14 +131,14 @@
     </header>
     <section class="hero-banner">
         <div class="container">
-            <div class="hero-caption mt-lg-5">
+            <div class="hero-caption">
 
                 <div class="mask-container">
                     <div class="header-wrap">
                         <video class="bg-video" playsinline muted loop preload src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4">    
                    
                 </video>
-                        <svg class="svg-txt" viewBox="0 0 1110 625">                                   
+                        <svg class="svg-txt" viewBox="0 0 850 450">                                   
                     <g class="header-backdrop" mask="url(#header-mask)">
                         <rect id="cover"
                               x="-5%" y="-5%" width="110%" height="110%" />  
@@ -142,19 +146,19 @@
                     <g class="transparent-text">
                         <text id="heading" class="heading-text"
                               text-anchor="middle"
-                              x="300"  y="120" dy="0.3em">Forget 
+                              x="226"  y="120" dy="0.3em">Forget 
                             </text>      
                         <text id="heading2" class="heading-text"
                               text-anchor="middle"
-                              x="548"  y="260" dy="0.3em">everything you 
+                              x="427"  y="200" dy="0.3em">everything you 
                             </text>      
                         <text id="heading3" class="heading-text"
                               text-anchor="middle"
-                              x="448"  y="400" dy="0.3em">know about 
+                              x="345"  y="280" dy="0.3em">know about 
                             </text>      
                         <text id="heading4" class="heading-text"
                               text-anchor="middle"
-                              x="570"  y="560" dy="0.3em">fashion rentals 
+                              x="445"  y="360" dy="0.3em">fashion rentals 
                             </text>    
                     </g>
                     <mask id="header-mask">
