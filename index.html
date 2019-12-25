@@ -11,31 +11,87 @@
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="css/media.css">
     <style>
-         :root {
-            --mask-color: #283234;
+        .heading-text {
+            font-family: Biko, sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 38px;
         }
-        /* .svg-txt {
+        
+        .transparent-text {
+            fill-opacity: 0;
+            stroke: cyan;
+            stroke-opacity: 0.5;
+        }
+        
+        .transparent-text text {
+            font-size: 105px;
+        }
+        
+        .header-backdrop {
+            fill: #283234;
+            /* matches the header background color */
+        }
+        
+        .mask-container {
+            width: 100%;
+            margin: 0 auto;
+            max-width: 1200px;
+            overflow: hidden;
+            background: #283234;
+            /* same color as SVG overlay */
+        }
+        
+        .mask-container.hovered .bg-video {
+            opacity: 1;
+        }
+        
+        .bg-video {
+            opacity: 0;
+            transition: opacity .3s ease;
+        }
+        
+        .header-wrap {
+            position: relative;
+            margin: 0 auto;
+            box-sizing: border-box;
+            padding-bottom: 56.25%;
+            /* = 100% * 9/16 */
+            /* max-width: calc( (100vh - 2em) * 16 /9); */
+            width: 100%;
+        }
+        
+        .mask-container,
+        .mask-container .bg-video,
+        .mask-container .svg-txt {
+            /* max-height: calc(100vh - 2em); */
+            height: 100%;
+        }
+        
+        .mask-container .bg-video,
+        .mask-container .svg-txt {
+            display: block;
+            width: 100%;
+            height: 100%;
             position: absolute;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
-        } */
-        
-        .svg-txt text {
-            font-size: 125px;
-            font-weight: bold;
-            fill: var(--mask-color);
-            fill: red;
         }
         
-        .svg-txt rect {
-            fill: white;
+        .mask-container .svg-txt {
+            box-sizing: content-box;
+            padding: 5px;
+            /* cover up edges of video completely */
+            top: -5px;
+            left: -5px;
+            overflow: visible;
         }
         
-        .svg-txt>.svg-mask {
-            -webkit-mask: url(#mask);
-            mask: url(#mask);
+        @media (min-width: 1200px) {
+            .mask-container {
+                padding: 0 calc(50% - 600px);
+                /* add side-padding if available width is more than 1200px */
+            }
         }
     </style>
 </head>
@@ -71,23 +127,45 @@
     </header>
     <section class="hero-banner">
         <div class="container">
-            <div class="hero-caption">
+            <div class="hero-caption mt-lg-5">
 
-                <div class="mask-container position-relative">
-                    <video class="position-relative w-100 h-100 bg-video" style="z-index: 1;top: 0;left: 0;" src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4" playsinline muted loop controls></video>
-                    <!-- <h2 class="txt-cus position-relative">Forget<br> everything you know about fashion rentals</h2> -->
-                    <svg class="svg-txt position-absolute w-100 h-100" style="z-index: 1;top: 0;left: 0;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1110 625">
-                      <defs>
-                      <mask id="mask" x="0" y="0" width="100%" height="100%" >
-                        <rect x="0" y="0" width="100%" height="100%" />
-                      <text class="text-uppercase" x="0"  y="160">Forget</text>
-                      <text class="text-uppercase" x="0"  y="300">everything you</text>
-                      <text class="text-uppercase" x="0"  y="440">know about</text>
-                      <text class="text-uppercase" x="0"  y="600">fashion rentals</text>
-                        </mask>
-                    </defs>
-                   <rect class="svg-mask" x="0" y="0" width="100%" height="100%" />
-                    </svg>
+                <div class="mask-container">
+                    <div class="header-wrap">
+                        <video class="bg-video" playsinline muted loop preload src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4">    
+                   
+                </video>
+                        <svg class="svg-txt" viewBox="0 0 1110 625">                                   
+                    <g class="header-backdrop" mask="url(#header-mask)">
+                        <rect id="cover"
+                              x="-5%" y="-5%" width="110%" height="110%" />  
+                    </g>
+                    <g class="transparent-text">
+                        <text id="heading" class="heading-text"
+                              text-anchor="middle"
+                              x="300"  y="120" dy="0.3em">Forget 
+                            </text>      
+                        <text id="heading2" class="heading-text"
+                              text-anchor="middle"
+                              x="548"  y="260" dy="0.3em">everything you 
+                            </text>      
+                        <text id="heading3" class="heading-text"
+                              text-anchor="middle"
+                              x="448"  y="400" dy="0.3em">know about 
+                            </text>      
+                        <text id="heading4" class="heading-text"
+                              text-anchor="middle"
+                              x="570"  y="560" dy="0.3em">fashion rentals 
+                            </text>    
+                    </g>
+                    <mask id="header-mask">
+                        <use xlink:href="#cover" style="fill: white;" />     
+                        <use xlink:href="#heading" />
+                        <use xlink:href="#heading2" />
+                        <use xlink:href="#heading3" />
+                        <use xlink:href="#heading4" />
+                    </mask>
+                </svg>
+                    </div>
                 </div>
                 <h5>Welcome to New Yorks Biggest Closet</h5>
                 <ul>
@@ -122,9 +200,11 @@
     <script type="text/javascript" src="js/owl.carousel.min.js"></script>
     <script src="js/custom.js"></script>
     <script type="text/javascript">
+        const maskContainer = document.querySelector('.mask-container');
         const bgVideo = document.querySelector('.bg-video');
         const svgTxt = document.querySelector('.svg-txt');
         svgTxt.addEventListener('mouseenter', () => {
+            maskContainer.classList.add('hovered');
             bgVideo.play();
         });
     </script>
