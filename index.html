@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>index</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
+    <link rel="stylesheet" type="text/css" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/media.css">
+    <style>
+         :root {
+            --mask-color: #283234;
+        }
+        /* .svg-txt {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        } */
+        
+        .svg-txt text {
+            font-size: 125px;
+            font-weight: bold;
+            fill: var(--mask-color);
+            fill: red;
+        }
+        
+        .svg-txt rect {
+            fill: white;
+        }
+        
+        .svg-txt>.svg-mask {
+            -webkit-mask: url(#mask);
+            mask: url(#mask);
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-inner">
+                <button type="button" class="menuBtn">
+      <img src="images/menu.svg" alt="">
+    </button>
+                <div class="logo">
+                    <a href="#">
+     COMPANY LOGO
+      </a>
+                </div>
+                <div class="menu">
+                    <div class="mobile-slug">
+                        <span>Menu</span>
+                        <a class="closeMenu" href="#"><i class="fas fa-times"></i></a>
+                    </div>
+                    <ul class="nav-menu">
+                        <li><a href="#">LEND</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">CATALOGUE <i class="fas fa-sort-down"></i></a></li>
+                    </ul>
+                </div>
+                <div class="btn-box">
+                    <a class="btn1" href="#">Get the app</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <section class="hero-banner">
+        <div class="container">
+            <div class="hero-caption">
+
+                <div class="mask-container position-relative">
+                    <video class="position-relative w-100 h-100 bg-video" style="z-index: 1;top: 0;left: 0;" src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4" playsinline muted loop controls></video>
+                    <!-- <h2 class="txt-cus position-relative">Forget<br> everything you know about fashion rentals</h2> -->
+                    <svg class="svg-txt position-absolute w-100 h-100" style="z-index: 1;top: 0;left: 0;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1110 625">
+                      <defs>
+                      <mask id="mask" x="0" y="0" width="100%" height="100%" >
+                        <rect x="0" y="0" width="100%" height="100%" />
+                      <text class="text-uppercase" x="0"  y="160">Forget</text>
+                      <text class="text-uppercase" x="0"  y="300">everything you</text>
+                      <text class="text-uppercase" x="0"  y="440">know about</text>
+                      <text class="text-uppercase" x="0"  y="600">fashion rentals</text>
+                        </mask>
+                    </defs>
+                   <rect class="svg-mask" x="0" y="0" width="100%" height="100%" />
+                    </svg>
+                </div>
+                <h5>Welcome to New Yorks Biggest Closet</h5>
+                <ul>
+                    <li>• Save money on vintage, luxury and designer </li>
+                    <li>• Most Earth-friendly form of renting</li>
+                    <li>• Guaranteed quality, cleaning, and size-fit</li>
+                </ul>
+
+                <a class="btn1" href="#">Download the App</a>
+            </div>
+            <a href="#startPage" class="scrollMouse scrollto">
+                <span class="smInner"><span class="smDot"></span></span>
+                <i class="fas fa-chevron-down"></i>
+            </a>
+        </div>
+
+    </section>
+
+    <section class="rectangle-wrap">
+        <div class="container">
+            <div class="rectangle1"></div>
+            <div class="rectangle2"></div>
+            <div class="rectangle3"></div>
+            <div class="rectangle4"></div>
+        </div>
+    </section>
+
+
+    <div style="height: 800px; display: block;"></div>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/owl.carousel.min.js"></script>
+    <script src="js/custom.js"></script>
+    <script type="text/javascript">
+        const bgVideo = document.querySelector('.bg-video');
+        const svgTxt = document.querySelector('.svg-txt');
+        svgTxt.addEventListener('mouseenter', () => {
+            bgVideo.play();
+        });
+    </script>
+</body>
+
+</html>
